@@ -1,10 +1,10 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import RedirectResponse
 
-from src.api.handlers import router as img_router
-from src.conf.settings import app_version
+from src.api_v1.handlers import router as img_router
+from src.conf import Config
 
-app = FastAPI(version=app_version)
+app = FastAPI(version=Config.app_version)
 app.include_router(router=img_router, prefix="/img")
 
 
