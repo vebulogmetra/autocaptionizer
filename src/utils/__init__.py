@@ -1,3 +1,3 @@
-from .text_translation import translate
+from src.utils.text_translation import translate  # noqa
 
 __all__ = "translate"
