@@ -3,13 +3,13 @@ import os
 from flask import Flask, abort, render_template, request
 from werkzeug.utils import secure_filename
 
-from src.conf import Config
+from src.conf import config
 from src.ml.v2 import get_caption
 
-app = Flask(__name__, template_folder=Config.templates_path)
+app = Flask(__name__, template_folder=config.templates_path)
 app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024
-app.config["ALLOWED_EXTENSIONS"] = Config.allowed_extensions
-app.config["UPLOAD_PATH"] = Config.uploaded_images_path
+app.config["ALLOWED_EXTENSIONS"] = config.allowed_extensions
+app.config["UPLOAD_PATH"] = config.uploaded_images_path
 
 
 def allowed_file(filename: str):
@@ -33,7 +33,7 @@ def upload_files():
         filename = secure_filename(uploaded_file.filename)
         filepath = os.path.join(app.config["UPLOAD_PATH"], filename)
         uploaded_file.save(filepath)
-        caption = get_caption(image_path=filepath, transl=Config.translate_captions)
+        caption = get_caption(image_path=filepath, transl=config.translate_captions)
         return render_template(
             "upload_success.html", caption=caption, uploaded_image=filepath
         )

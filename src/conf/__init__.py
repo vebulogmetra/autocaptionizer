@@ -1,3 +1,3 @@
-from src.conf.settings import Config  # noqa
+from src.conf.settings import config, logger
 
-__all__ = "Config"
+__all__ = "config", "logger"
