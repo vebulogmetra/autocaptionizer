@@ -33,7 +33,7 @@ def upload_files():
         filename = secure_filename(uploaded_file.filename)
         filepath = os.path.join(app.config["UPLOAD_PATH"], filename)
         uploaded_file.save(filepath)
-        caption = get_caption(image_path=filepath, transl=False)
+        caption = get_caption(image_path=filepath, transl=Config.translate_captions)
         return render_template(
             "upload_success.html", caption=caption, uploaded_image=filepath
         )

@@ -14,3 +14,4 @@ class Config:
     uploaded_images_path: PathLike = "src/ml/uploaded_images"
     templates_path: PathLike = "src/ui/templates"
     allowed_extensions: tuple[str] = ("jpg", "png", "jpeg")
+    translate_captions: bool = True

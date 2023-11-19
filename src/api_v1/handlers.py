@@ -39,6 +39,8 @@ def upload_photo(photo: UploadFile = File(...)):
 
     print(f"Successfully uploaded {photo.filename}")
 
-    caption: str = get_caption(image_path=photo_save_path, transl=True)
+    caption: str = get_caption(
+        image_path=photo_save_path, transl=Config.translate_captions
+    )
 
     return {f"{photo.filename}": caption}
